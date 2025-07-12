@@ -37,13 +37,13 @@ orderRoute.get("/allOrder/:paymentType", authenticateJWTId, orderController.getO
 orderRoute.post(
   "/bulk-accept-orders",
   authenticateJWT,
-  authorizeRole(Others.role.SUPERADMIN, Others.role.ADMIN),
+  authorizeRole(Others.role.SUPERADMIN, Others.role.ADMIN, Others.role.MODERATOR),
   orderController.SuperAdminAccepted
 );
 orderRoute.post(
   "/bulk-reject-orders",
   authenticateJWT,
-  authorizeRole(Others.role.SUPERADMIN, Others.role.ADMIN),
+  authorizeRole(Others.role.SUPERADMIN, Others.role.ADMIN,Others.role.MODERATOR),
   orderController.SuperAdminRejected
 );
 

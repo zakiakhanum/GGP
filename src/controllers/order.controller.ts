@@ -337,7 +337,7 @@ export const SuperAdminBulkAccepted = asyncWrapper(async (req: Request, res: Res
 
 export const SuperAdminBulkRejected = asyncWrapper(async (req: Request, res: Response) => {
   const { orderIds, rejectionReason } = req.body;
-
+  
   if (!req.user) {
     return res.status(401).json({ message: "Unauthorized: User not found" });
   }
@@ -348,7 +348,7 @@ export const SuperAdminBulkRejected = asyncWrapper(async (req: Request, res: Res
 
   const { email: adminEmail, role } = req.user;
 
-  if (![Others.role.ADMIN, Others.role.SUPERADMIN].includes(role)) {
+  if (![Others.role.ADMIN, Others.role.SUPERADMIN, Others.role.MODERATOR].includes(role)) {
     return res.status(403).json({ message: "Forbidden: Insufficient privileges" });
   }
 
