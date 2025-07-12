@@ -175,6 +175,7 @@ export const getAdminsAndModeratorsController = asyncWrapper(
     const { admins, totalAdmins } = await getAdminsAndModeratorsBySuperAdmin(superAdminId, req.query);
 
     console.log("Result from service:", { admins, totalAdmins });
+    //consoling
 
     res.status(200).json({
       message: "Admins and their moderators fetched successfully",
